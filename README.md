@@ -1,3 +1,0 @@
-# Library-Wayfinding
-
-HELLO WORLD
