@@ -1,0 +1,19 @@
+
+
+    body{
+
+        height: 100vh;
+
+    }
+    .btn-default{
+
+        border-width: 50px;
+
+    }
+    .center{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
