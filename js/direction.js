@@ -111,6 +111,8 @@ class PriorityQueue {
       };
     }
 
+
+
 function Wayfind(Start, End) {
 
 const map = new Graph();
@@ -132,8 +134,16 @@ let path = map.stp(Start, End);
 
 document.getElementById("directions").innerHTML = path;
 
+
+
+}
+
+function update(){
+
   
 }
+
+
 
 
 
