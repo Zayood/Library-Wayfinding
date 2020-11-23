@@ -2,16 +2,25 @@ class Graph {
     constructor() {
       this.nodes = [];
       this.adjacencyList = {};
+      this.directionList = {};
     }
 
     addNode(node) {
         this.nodes.push(node); 
         this.adjacencyList[node] = [];
+        this.directionList[node] = [];
     }
 
-    addEdge(node1, node2, weight) {
+    addEdge(node1, node2, weight, direction) {
         this.adjacencyList[node1].push({node:node2, weight: weight});
         this.adjacencyList[node2].push({node:node1, weight: weight});
+
+        this.directionList[node1].push({node:node2, direction: direction});
+        if (direction == "Right"){ direction = "Left";}
+        else if (direction == "Forward"){ direction = "Backwards";}
+        else if (direction == "Left"){ direction = "Right";}
+        else if (direction == "Backwards"){ direction = "Forward";}
+        this.directionList[node2].push({node:node1, direction:direction});
     }
 
     stp(start, end){
@@ -37,7 +46,7 @@ class Graph {
           let time = times[currentNode] + neighbor.weight;
 
           if (time < times[neighbor.node]) {
-            times[neighbor.node] = time;
+            times[neighbor.node] = time ;
             backtrace[neighbor.node] = currentNode;
             pq.enqueue([neighbor.node, time]);
           }
@@ -50,7 +59,25 @@ class Graph {
     path.unshift(backtrace[lastStep])
     lastStep = backtrace[lastStep]
   }
-  return `Path is ${path} and time is ${times[end]}`
+
+  let directions = ("Starting from" + path[0] + " take ");
+  var i;
+  for (i = 1; i<path.length;i++){
+    directions += (times[path[i]] - times[path[i- 1]]) + " steps towards" + (path[i]);
+
+
+    for (let j = 0; j <this.directionList[path[i-1]].length; j++) {
+      if(this.directionList[path[i-1]][j].node == path[i]){
+        directions += "(" + this.directionList[path[i-1]][j].direction + ")";
+      }
+    }
+  if (i+1 < path.length){
+    directions += " then ";
+  }
+ } 
+
+   return directions;
+
 }
 }
 
@@ -84,17 +111,50 @@ class PriorityQueue {
       };
     }
 
+function Wayfind(Start, End) {
+
 const map = new Graph();
-map.addNode("Front Entrance");
-map.addNode("Service Desk");
-map.addNode("Study rooms");
-map.addNode("Men's Washroom");
-map.addNode("Curbside Pickup");
-map.addNode("Women's Washroom");
-map.addEdge("Front Entrance", "Study rooms", 20);
-map.addEdge("Front Entrance", "Service Desk", 16);
-map.addEdge("Front Entrance", "Men's Washroom", 14);
-map.addEdge("Men's Washroom", "Women's Washroom", 10);
-map.addEdge("Men's Washroom", "Curbside Pickup", 5);
-map.addEdge("Women's Washroom", "Curbside Pickup", 5);
-map.addEdge("Women's Washroom", "Service Desk", 5);
+map.addNode(" Front Entrance");
+map.addNode(" Service Desk");
+map.addNode(" Study rooms");
+map.addNode(" Mens Washroom");
+map.addNode(" Curbside Pickup");
+map.addNode(" Womens Washroom");
+map.addEdge(" Front Entrance", " Study rooms", 20, "Left");
+map.addEdge(" Front Entrance", " Service Desk", 16, "Right");
+map.addEdge(" Front Entrance", " Mens Washroom", 14, "Forward");
+map.addEdge(" Mens Washroom", " Womens Washroom", 10, "Right");
+map.addEdge(" Mens Washroom", " Curbside Pickup", 5, "Right");
+map.addEdge(" Womens Washroom", " Curbside Pickup", 5, "Left");
+map.addEdge(" Womens Washroom", " Service Desk", 5, "Backwards");
+
+let path = map.stp(Start, End);
+
+document.getElementById("directions").innerHTML = path;
+
+  
+}
+
+
+
+
+
+/*TESTS
+
+let path = map.stp(" Front Entrance"," Women's Washroom");
+let path2 = map.stp(" Study rooms"," Women's Washroom");
+let path3 = map.stp(" Service Desk"," Men's Washroom");
+let path4 = map.stp(" Men's Washroom"," Service Desk");
+
+console.log("Test 1:")
+console.log(path);
+console.log("Test 2:");
+console.log(path2);
+console.log("Test 3:");
+console.log(path3);
+console.log("Test 4:");
+console.log(path4);*/
+
+
+
+
