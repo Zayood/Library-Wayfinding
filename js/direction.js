@@ -16,10 +16,10 @@ class Graph {
         this.adjacencyList[node2].push({node:node1, weight: weight});
 
         this.directionList[node1].push({node:node2, direction: direction});
-        if (direction == "Right"){ direction = "Left";}
-        else if (direction == "Forward"){ direction = "Backwards";}
-        else if (direction == "Left"){ direction = "Right";}
-        else if (direction == "Backwards"){ direction = "Forward";}
+        if (direction == "East"){ direction = "West";}
+        else if (direction == "North"){ direction = "South";}
+        else if (direction == "West"){ direction = "East";}
+        else if (direction == "South"){ direction = "North";}
         this.directionList[node2].push({node:node1, direction:direction});
     }
 
@@ -122,23 +122,38 @@ map.addNode(" Study rooms");
 map.addNode(" Mens Washroom");
 map.addNode(" Curbside Pickup");
 map.addNode(" Womens Washroom");
-map.addEdge(" Front Entrance", " Study rooms", 20, "Left");
-map.addEdge(" Front Entrance", " Service Desk", 16, "Right");
-map.addEdge(" Front Entrance", " Mens Washroom", 14, "Forward");
-map.addEdge(" Mens Washroom", " Womens Washroom", 10, "Right");
-map.addEdge(" Mens Washroom", " Curbside Pickup", 5, "Right");
-map.addEdge(" Womens Washroom", " Curbside Pickup", 5, "Left");
-map.addEdge(" Womens Washroom", " Service Desk", 5, "Backwards");
+map.addEdge(" Front Entrance", " Study rooms", 20, "West");
+map.addEdge(" Front Entrance", " Service Desk", 16, "East");
+map.addEdge(" Front Entrance", " Mens Washroom", 14, "North");
+map.addEdge(" Womens Washroom", " Mens Washroom", 10, "East");
+map.addEdge(" Womens Washroom", " Curbside Pickup", 5, "East");
+map.addEdge(" Mens Washroom", " Curbside Pickup", 5, "West");
+map.addEdge(" Mens Washroom", " Service Desk", 5, "South");
 
 let path = map.stp(Start, End);
 
-document.getElementById("directions").innerHTML = path;
+return path;
 
 
 
 }
 
 function update(){
+
+  var urlParams;
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+
+  path = Wayfind(urlParams["start"], urlParams["end"]);
+
+  document.getElementById("dir").innerHTML = path;
 
   
 }
