@@ -162,24 +162,3 @@ function update(){
 
 
 
-
-
-/*TESTS
-
-let path = map.stp(" Front Entrance"," Women's Washroom");
-let path2 = map.stp(" Study rooms"," Women's Washroom");
-let path3 = map.stp(" Service Desk"," Men's Washroom");
-let path4 = map.stp(" Men's Washroom"," Service Desk");
-
-console.log("Test 1:")
-console.log(path);
-console.log("Test 2:");
-console.log(path2);
-console.log("Test 3:");
-console.log(path3);
-console.log("Test 4:");
-console.log(path4);*/
-
-
-
-
