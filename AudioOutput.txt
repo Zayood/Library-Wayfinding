@@ -1,0 +1,19 @@
+Landing:
+    "Welcome to the U Ottawa Library Wayfinding System. Please click on the type of directions you would like. Text or Audio."
+    "Bienvenue a le système d'orientation de la bibliothèque U Ottawa. Veuillez cliquer sur le type de direction que vous voulez. Texte ou audio."
+
+Language:
+    "Chose you language. English or French"
+    "Choisissez votre langue. Englais ou Français"
+
+Destination English:
+    "Where would you like to go?"
+
+Destination French:
+    "Où voulez-vous aller?"
+
+Directions English:
+    "Here are your directions"
+
+Directions French:
+    "Voici vos directions"
