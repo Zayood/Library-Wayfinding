@@ -13,6 +13,20 @@ function goLanguage() {
     location.href = url;
 }
 
+function goLanguageA() {
+
+    let page = getInfo();
+    var url;
+    if (page["node"]){
+    url = "Language.html?node=" + page["node"];
+    }
+    else{
+        url = "Language.html";
+    }
+
+    location.href = url;
+}
+
 function goDestination() {
 
     let page = getInfo();
