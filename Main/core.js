@@ -1,10 +1,10 @@
 
 function goLanguage() {
 
-    let page = getLocation();
+    let page = getInfo();
     var url;
-    if (page){
-    url = "Language.html?node=" + page;
+    if (page["node"]){
+    url = "Language.html?node=" + page["node"];
     }
     else{
         url = "Language.html";
@@ -15,14 +15,19 @@ function goLanguage() {
 
 function goDestination() {
 
-    let page = getLocation();
-
-    href="../English Navigation/Landing_page_Front Entrance.html"
-
-    let url = "../English Navigation/Landing_page_" + page + ".html"
-
+    let page = getInfo();
+    let url = "../English Navigation/Landing_page_" + page["node"] + ".html"
     location.href = url;
 }
+
+function goDestinationF() {
+
+    let page = getInfo();
+    let url = "../French Navigation/FR_landing_page_" + page["node"] + ".html"
+                
+    location.href = url;
+}
+
 
 function goDirections(){
     location.href = "Directions.html";
@@ -32,7 +37,7 @@ function reset(){
     location.href = "index.html";
 }
 
-function getLocation(){
+function getInfo(){
 
     var urlParams;
     var match,
@@ -45,5 +50,5 @@ function getLocation(){
     while (match = search.exec(query))
        urlParams[decode(match[1])] = decode(match[2]);
 
-    return urlParams["node"];
+    return urlParams;
 }
