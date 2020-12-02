@@ -155,6 +155,7 @@ function update(){
 
   document.getElementById("dir").innerHTML = path;
 
+
   
 }
 

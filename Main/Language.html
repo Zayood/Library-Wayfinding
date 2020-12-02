@@ -13,7 +13,7 @@
         <h2>
             <a href ="https://www.uottawa.ca/en">University of Ottawa</a>
         <h2>
-            <a href ="https://biblio.uottawa.ca/en/mrt-main-intro">Morisett Library</a>
+            <a href ="https://biblio.uottawa.ca/en/mrt-main-intro">Morissett Library</a>
         </h2>
         <h2>
             <a href = "../Main/index.html" >Way finding system</a>
@@ -32,7 +32,7 @@
     <title>uOttawa Library Wayfinding</title>
 
 </head>
-<body onload="ttsLang()" onclick="ttsLang()">
+<body onload="showtts()">
     
 <h1 class="text-center">Choose your language</h1>
 
@@ -40,6 +40,7 @@
 
     <a type="button" onclick="goDestination()" class="btn btn-success btn-lg btn-block btn-default">English</a>
     <button type="button" onclick="goDestinationF()"class="btn btn-primary btn-lg btn-block btn-default">French</button>
+    <button id="ttsButton" type="button" onclick="ttsLang()"class="btn btn-primary btn-lg btn-block btn-default">tts</button>
 
 </div>
 

@@ -34,13 +34,14 @@
     <title>uOttawa Library Wayfinding</title>
 
 </head>
-<body onload="update()">
+<body onload="update()" onload="showtts()">
     <h1 class="text-center">Here are your directions</h1>
     <div class="container">
     <h3 id="dir"></h3>
 
+    <button id="ttsButton" onclick="read()" type="button" class="btn btn-block btn-danger btn-default">tts</button>
     </div>
-    <img src="map.jpg" alt="map"  style="width:500px;height:300px">
+    
 
 </body>
 </html>
