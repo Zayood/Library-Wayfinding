@@ -49,6 +49,8 @@ function goDestinationF() {
 
 
 function goDirections(){
+
+
     location.href = "Directions.html";
 }
 
@@ -98,6 +100,7 @@ function ttsLang() {
 }
 
 function read(){
+    
     var msg = new SpeechSynthesisUtterance();
     msg.lang = "en-US";
     msg.volume = 0.4;

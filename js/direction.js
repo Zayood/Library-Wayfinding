@@ -124,7 +124,7 @@ map.addNode(" Curbside Pickup");
 map.addNode(" Womens Washroom");
 map.addEdge(" Front Entrance", " Study rooms", 20, "West");
 map.addEdge(" Front Entrance", " Service Desk", 16, "East");
-map.addEdge(" Front Entrance", " Mens Washroom", 14, "North");
+map.addEdge(" Front Entrance", " Womens Washroom", 14, "North");
 map.addEdge(" Womens Washroom", " Mens Washroom", 10, "East");
 map.addEdge(" Womens Washroom", " Curbside Pickup", 5, "East");
 map.addEdge(" Mens Washroom", " Curbside Pickup", 5, "West");
@@ -133,8 +133,6 @@ map.addEdge(" Mens Washroom", " Service Desk", 5, "South");
 let path = map.stp(Start, End);
 
 return path;
-
-
 
 }
 
@@ -154,9 +152,22 @@ function update(){
   path = Wayfind(urlParams["start"], urlParams["end"]);
 
   document.getElementById("dir").innerHTML = path;
+}
 
+function drawLine(x, y, stopX, stopY){
 
   
+  var can = document.getElementById('canvas');
+  var ctx = can.getContext('2d');
+
+  ctx.clearRect (0, 0, can.width, can.height);
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(stopX, stopY);
+  ctx.closePath();
+  ctx.stroke();
+
+  //Give each node their own (x,y) coords.
 }
 
 
