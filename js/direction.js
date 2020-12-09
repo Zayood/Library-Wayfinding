@@ -1,3 +1,5 @@
+// A big portion of the pathfinding algorithm code came from https://medium.com/@adriennetjohnson/a-walkthrough-of-dijkstras-algorithm-in-javascript-e94b74192026
+// Author is Adrienne Johnson
 class Graph {
     constructor() {
       this.nodes = [];
@@ -80,7 +82,6 @@ class Graph {
 
 }
 }
-
 class PriorityQueue {
     constructor() {
       this.collection = [];
@@ -110,9 +111,6 @@ class PriorityQueue {
         return (this.collection.length === 0) 
       };
     }
-
-
-
 function Wayfind(Start, End) {
 
 const map = new Graph();

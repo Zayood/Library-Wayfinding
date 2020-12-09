@@ -110,6 +110,9 @@ function read(){
 }
 
 
+//This function was taken from the internet cuz I didnt know how JQuery works 
+//https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+
 function getInfo(){
 
     var urlParams;
